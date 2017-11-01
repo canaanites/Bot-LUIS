@@ -19,8 +19,7 @@ var connector = new builder.ChatConnector({
 server.post('/api/messages', connector.listen());
 
 var bot = new builder.UniversalBot(connector, function (session) {
-    var msg = new builder.Message(session).text("<b>MOEMOE</b>");
-    session.send(msg + ' Sorry, I did not understand \'%s\'. Type \'help\' if you need assistance.', session.message.text);
+    session.send('<b>MOEMOE</b> Sorry, I did not understand \'%s\'. Type \'help\' if you need assistance.', session.message.text);
 });
 
 // You can provide your own model by specifing the 'LUIS_MODEL_URL' environment variable
@@ -30,8 +29,7 @@ bot.recognizer(recognizer);
 
 bot.dialog('SearchHotels', [
     function (session, args, next) {
-        var msg = new builder.Message(session).text("<b>MOEMOE</b>");
-        session.send(msg + ' Welcome to the Hotels finder! We are analyzing your message: \'%s\'', session.message.text);
+        session.send('<b>MOEMOE</b> Welcome to the Hotels finder! We are analyzing your message: \'%s\'', session.message.text);
 
         // try extracting entities
         var cityEntity = builder.EntityRecognizer.findEntity(args.intent.entities, 'builtin.geography.city');
